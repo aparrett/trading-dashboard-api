@@ -22,11 +22,13 @@ const main = async () => {
         synchronize: true,
         migrations: [path.join(__dirname, './migrations/*')],
         entities: [User],
-        ssl: true,
+        ssl: __prod__,
         extra: {
-            ssl: {
-                rejectUnauthorized: false
-            }
+            ssl: __prod__
+                ? {
+                      rejectUnauthorized: false
+                  }
+                : false
         }
     })
 
