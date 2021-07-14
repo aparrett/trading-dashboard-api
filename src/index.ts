@@ -30,7 +30,11 @@ const main = async () => {
     const app = express()
 
     const RedisStore = connectRedis(session)
-    const redis = new Redis(process.env.REDIS_URL)
+    const redis = new Redis(process.env.REDIS_URL, {
+        tls: {
+            rejectUnauthorized: false
+        }
+    })
     app.set('trust proxy', 1)
     app.use(
         cors({
