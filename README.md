@@ -1,4 +1,5 @@
 # Trading Dashboard
+The API for my stock trading dashboard. Please be aware that the production application is using free database instances, therefore reliability cannot be guaranteed and changes may be lost.
 
 ## Local Installation
 
@@ -51,7 +52,7 @@ brew services start redis
 10. Create a filed named `.env` that has the environment variables listed in .env.example. For example:
 
 ```
-DATABASE_URL=postgresql://postgres:admin@localhost:5432/trading_dashboard
+DATABASE_URL=postgresql://username:password@localhost:5432/trading_dashboard
 REDIS_URL=127.0.0.1:6379
 PORT=4000
 SESSION_SECRET=my_secret
