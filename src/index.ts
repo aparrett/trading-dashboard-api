@@ -21,7 +21,8 @@ const main = async () => {
         logging: false,
         synchronize: true,
         migrations: [path.join(__dirname, './migrations/*')],
-        entities: [User]
+        entities: [User],
+        ssl: __prod__
     })
 
     await conn.runMigrations()
