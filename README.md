@@ -48,7 +48,7 @@ brew install redis
 brew services start redis
 ```
 
-10. Create a .env that has the environment variables listed in .env.example. For example:
+10. Create a filed named `.env` that has the environment variables listed in .env.example. For example:
 
 ```
 DATABASE_URL=postgresql://postgres:admin@localhost:5432/trading_dashboard
