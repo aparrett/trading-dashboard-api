@@ -47,3 +47,16 @@ brew install redis
 ```
 brew services start redis
 ```
+
+10. Create a .env that has the environment variables listed in .env.example. For example:
+
+```
+DATABASE_URL=postgresql://postgres:admin@localhost:5432/trading_dashboard
+REDIS_URL=127.0.0.1:6379
+PORT=4000
+SESSION_SECRET=my_secret
+CORS_ORIGIN=http://localhost:3000
+```
+
+## Appreciation
+This app was initialized using a modified version of Ben Awad's template. Thanks Ben!
