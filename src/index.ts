@@ -22,8 +22,11 @@ const main = async () => {
         synchronize: true,
         migrations: [path.join(__dirname, './migrations/*')],
         entities: [User],
-        ssl: {
-            rejectUnauthorized: false
+        ssl: true,
+        extra: {
+            ssl: {
+                rejectUnauthorized: false
+            }
         }
     })
 
@@ -83,7 +86,7 @@ const main = async () => {
     })
 
     app.listen(parseInt(process.env.PORT), () => {
-        console.log('server started on localhost:4000')
+        console.log(`server started on port ${process.env.PORT}`)
     })
 }
 
