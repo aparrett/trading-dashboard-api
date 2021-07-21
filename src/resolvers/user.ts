@@ -148,14 +148,19 @@ export class UserResolver {
             user = result.raw[0]
         } catch (err) {
             if (err.code === '23505') {
-                return {
-                    errors: [
-                        {
-                            field: 'username',
-                            message: 'username already taken'
-                        }
-                    ]
+                let errResponse
+                if (err.detail.includes('email')) {
+                    errResponse = {
+                        field: 'email',
+                        message: 'Email already taken.'
+                    }
+                } else {
+                    errResponse = {
+                        field: 'username',
+                        message: 'Username already taken.'
+                    }
                 }
+                return { errors: [errResponse] }
             }
         }
 
