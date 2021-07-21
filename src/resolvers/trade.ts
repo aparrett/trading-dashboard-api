@@ -1,32 +1,9 @@
-import { Resolver, Mutation, Arg, Ctx, UseMiddleware, Field, InputType } from 'type-graphql'
+import { Resolver, Mutation, Arg, Ctx, UseMiddleware } from 'type-graphql'
 import { MyContext } from '../types'
 import { getConnection } from 'typeorm'
 import { Trade } from '../entities/Trade'
 import { isAuth } from '../middleware/isAuth'
-
-@InputType()
-class TradeInput {
-    @Field()
-    symbol!: string
-
-    @Field()
-    side!: string
-
-    @Field()
-    quantity!: number
-
-    @Field()
-    entry!: number
-
-    @Field()
-    close!: number
-
-    @Field()
-    openDate!: Date
-
-    @Field()
-    closeDate!: Date
-}
+import { TradeInput } from './TradeInput'
 
 @Resolver(Trade)
 export class TradeResolver {
