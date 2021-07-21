@@ -5,6 +5,7 @@ import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
 import { buildSchema } from 'type-graphql'
 import { UserResolver } from './resolvers/user'
+import { TradeResolver } from './resolvers/trade'
 import Redis from 'ioredis'
 import session from 'express-session'
 import connectRedis from 'connect-redis'
@@ -13,6 +14,7 @@ import { createConnection } from 'typeorm'
 import { User } from './entities/User'
 import path from 'path'
 import { createUserLoader } from './utils/createUserLoader'
+import { Trade } from './entities/Trade'
 
 const main = async () => {
     const conn = await createConnection({
@@ -21,7 +23,7 @@ const main = async () => {
         logging: false,
         synchronize: true,
         migrations: [path.join(__dirname, './migrations/*')],
-        entities: [User],
+        entities: [User, Trade],
         ssl: __prod__,
         extra: {
             ssl: __prod__
@@ -62,7 +64,7 @@ const main = async () => {
 
     const apolloServer = new ApolloServer({
         schema: await buildSchema({
-            resolvers: [UserResolver],
+            resolvers: [UserResolver, TradeResolver],
             validate: false
         }),
         context: ({ req, res }) => ({
