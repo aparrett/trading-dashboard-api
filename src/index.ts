@@ -53,7 +53,7 @@ const main = async () => {
                 maxAge: 1000 * 60 * 60 * 24 * 365 * 10, // 10 years
                 httpOnly: false,
                 sameSite: 'none', // csrf
-                secure: false,
+                secure: __prod__,
                 domain: __prod__ ? 'daytradingdashboard.com' : undefined
             },
             saveUninitialized: false,
