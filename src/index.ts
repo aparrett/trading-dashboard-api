@@ -24,6 +24,7 @@ const main = async () => {
         migrations: [path.join(__dirname, './migrations/*')],
         entities: [User, Trade],
         ssl: __prod__,
+        synchronize: true,
         extra: {
             ssl: __prod__
                 ? {
