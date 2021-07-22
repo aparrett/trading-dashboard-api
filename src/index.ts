@@ -54,7 +54,7 @@ const main = async () => {
                 httpOnly: true,
                 sameSite: 'lax', // csrf
                 secure: false,
-                domain: __prod__ ? '.heroku.com' : undefined
+                domain: __prod__ ? '.daytradingdashboard.com' : undefined
             },
             saveUninitialized: false,
             secret: process.env.SESSION_SECRET,
