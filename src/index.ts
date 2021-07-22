@@ -52,9 +52,9 @@ const main = async () => {
             cookie: {
                 maxAge: 1000 * 60 * 60 * 24 * 365 * 10, // 10 years
                 httpOnly: true,
-                sameSite: 'lax', // csrf
+                sameSite: 'none', // csrf
                 secure: false,
-                domain: __prod__ ? '.daytradingdashboard.com' : undefined
+                domain: __prod__ ? 'daytradingdashboard.com' : undefined
             },
             saveUninitialized: false,
             secret: process.env.SESSION_SECRET,
