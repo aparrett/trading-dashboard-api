@@ -26,11 +26,11 @@ export class Trade extends BaseEntity {
     quantity!: number
 
     @Field()
-    @Column()
+    @Column('decimal')
     entry!: number
 
     @Field()
-    @Column()
+    @Column('decimal')
     close!: number
 
     @Field()

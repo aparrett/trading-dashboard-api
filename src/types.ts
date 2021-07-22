@@ -3,7 +3,7 @@ import { Redis } from 'ioredis'
 import { createUserLoader } from './utils/createUserLoader'
 
 export type MyContext = {
-    req: Request & { session: Express.Session }
+    req: Request & { session: { userId?: number } }
     redis: Redis
     res: Response
     userLoader: ReturnType<typeof createUserLoader>
