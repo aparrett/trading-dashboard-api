@@ -1,4 +1,4 @@
-import { Resolver, Mutation, Arg, Ctx, UseMiddleware } from 'type-graphql'
+import { Resolver, Mutation, Arg, Ctx, UseMiddleware, Query } from 'type-graphql'
 import { MyContext } from '../types'
 import { Trade } from '../entities/Trade'
 import { isAuth } from '../middleware/isAuth'
@@ -15,5 +15,10 @@ export class TradeResolver {
         const tradeEntities = Trade.create(trades.map((t) => ({ ...t, traderId: req.session.userId })))
         await Trade.insert(tradeEntities)
         return tradeEntities
+    }
+
+    @Query(() => [Trade])
+    trades(@Ctx() { req }: MyContext): Promise<Trade[]> {
+        return Trade.find({ where: { traderId: req.session.userId } })
     }
 }
