@@ -3,6 +3,7 @@ import { MyContext } from '../types'
 import { Trade } from '../entities/Trade'
 import { isAuth } from '../middleware/isAuth'
 import { TradeInput } from './TradeInput'
+import { titlecase } from '../utils/titlecase'
 
 @Resolver(Trade)
 export class TradeResolver {
@@ -12,7 +13,14 @@ export class TradeResolver {
         @Arg('trades', () => [TradeInput]) trades: TradeInput[],
         @Ctx() { req }: MyContext
     ): Promise<Trade[]> {
-        const tradeEntities = Trade.create(trades.map((t) => ({ ...t, traderId: req.session.userId })))
+        const tradeEntities = Trade.create(
+            trades.map((t) => ({
+                ...t,
+                traderId: req.session.userId,
+                quantity: Math.abs(t.quantity),
+                side: titlecase(t.side)
+            }))
+        )
         await Trade.insert(tradeEntities)
         return tradeEntities
     }
