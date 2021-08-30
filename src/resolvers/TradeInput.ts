@@ -14,12 +14,12 @@ export class TradeInput {
     @Field()
     entry!: number
 
-    @Field()
-    close!: number
+    @Field({ nullable: true })
+    close?: number
 
     @Field()
     openDate!: Date
 
-    @Field()
-    closeDate!: Date
+    @Field({ nullable: true })
+    closeDate?: Date
 }

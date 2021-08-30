@@ -29,15 +29,15 @@ export class Trade extends BaseEntity {
     @Column('decimal')
     entry!: number
 
-    @Field()
+    @Field({ nullable: true })
     @Column('decimal')
-    close!: number
+    close?: number
 
     @Field()
     @Column()
     openDate!: Date
 
-    @Field()
+    @Field({ nullable: true })
     @Column()
-    closeDate!: Date
+    closeDate?: Date
 }
