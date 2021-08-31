@@ -1,4 +1,4 @@
-import { Resolver, Mutation, Arg, Ctx, UseMiddleware, Query } from 'type-graphql'
+import { Resolver, Mutation, Arg, Ctx, UseMiddleware, Query, Int } from 'type-graphql'
 import { MyContext } from '../types'
 import { Trade } from '../entities/Trade'
 import { isAuth } from '../middleware/isAuth'
@@ -28,5 +28,12 @@ export class TradeResolver {
     @Query(() => [Trade])
     trades(@Ctx() { req }: MyContext): Promise<Trade[]> {
         return Trade.find({ where: { traderId: req.session.userId } })
+    }
+
+    @Mutation(() => Boolean)
+    @UseMiddleware(isAuth)
+    async deleteTrades(@Arg('ids', () => [Int]) ids: number[]): Promise<boolean> {
+        await Trade.delete(ids)
+        return true
     }
 }
