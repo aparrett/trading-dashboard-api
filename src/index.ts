@@ -76,7 +76,10 @@ const main = async () => {
 
     apolloServer.applyMiddleware({
         app,
-        cors: false
+        cors: false,
+        bodyParserConfig: {
+            limit: '100mb'
+        }
     })
 
     app.listen(parseInt(process.env.PORT), () => {

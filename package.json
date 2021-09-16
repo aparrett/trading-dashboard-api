@@ -43,7 +43,7 @@
     "express-session": "^1.17.1",
     "graphql": "^15.3.0",
     "ioredis": "^4.17.3",
-    "nodemailer": "^6.4.11",
+    "nodemailer": "^6.6.3",
     "pg": "^8.3.0",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.0.0-rc.3",
@@ -60,5 +60,7 @@
     "bracketSpacing": true,
     "trailingComma": "none"
   },
-  "engines": { "node": "12.22.3" }
+  "engines": {
+    "node": "12.22.3"
+  }
 }
